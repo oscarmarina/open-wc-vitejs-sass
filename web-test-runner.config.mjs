@@ -1,6 +1,8 @@
 // import { playwrightLauncher } from '@web/test-runner-playwright';
+import { defaultReporter } from '@web/test-runner';
+import {mochaStyleReporter} from './test-runner-mocha-style-reporter.mjs';
 
-const filteredLogs = ['Running in dev mode', 'lit-html is in dev mode'];
+const filteredLogs = ['in dev mode'];
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   /** Test files to run */
@@ -10,6 +12,11 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   nodeResolve: {
     exportConditions: ['browser', 'development'],
   },
+
+  reporters: [
+    defaultReporter(),
+    mochaStyleReporter(),
+  ],
 
   /** Filter out lit dev mode logs */
   filterBrowserLogs(log) {
