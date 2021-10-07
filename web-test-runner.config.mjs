@@ -1,6 +1,6 @@
 // import { playwrightLauncher } from '@web/test-runner-playwright';
 import { defaultReporter } from '@web/test-runner';
-import {mochaStyleReporter} from './test-runner-mocha-style-reporter.mjs';
+import {mochaStyleReporter} from '@blockquote/test-runner-mocha-style-reporter';
 
 const filteredLogs = ['in dev mode'];
 
