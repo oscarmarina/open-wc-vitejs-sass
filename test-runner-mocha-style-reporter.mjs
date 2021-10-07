@@ -1,37 +1,44 @@
-/* eslint-disable no-nested-ternary */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
+
 const colour = {
   reset: '\x1b[0m',
-  cyan: '\x1b[36m',
+  BrightBlue: '\x1b[94m',
   red: '\x1b[31m',
   green: '\x1b[32m',
-  dim: '\x1b[2m',
   yellow: '\x1b[33m',
   bright: '\x1b[1m',
-  magenta: '\x1b[35m',
+  grey: '\x1b[90m',
 };
 
 function outputSuite(suite, indent = '') {
-  let results = `${colour.cyan}${suite.name}\n`;
+  let results = `${colour.BrightBlue}${suite.name}\n`;
   results += `${suite.tests
     .map(test => {
       let result = indent;
-      if (test.skipped) {
-        result += `${colour.dim} - ${test.name}`;
-      } else if (test.passed) {
-        result += `${colour.green} ✓ ${colour.reset}${colour.bright}${test.name}`;
-      } else {
-        result += `${colour.red} ✕ ${test.name}`;
+      switch (test instanceof Object) {
+        case test.skipped:
+          result += `${colour.grey} - ${test.name}`;
+          break;
+        case test.passed:
+          result += `${colour.green} ✓ ${colour.reset}${colour.bright}${test.name}`;
+          break;
+        default:
+          result += `${colour.red} ✕ ${test.name}`;
+          break;
       }
-      result +=
-        test.duration > 100
-          ? ` ${colour.reset}${colour.red}(${test.duration}ms)`
-          : test.duration > 50
-          ? ` ${colour.reset}${colour.yellow}(${test.duration}ms)`
-          : ``;
+      switch (test instanceof Object) {
+        case test.duration > 100:
+          result += ` ${colour.reset}${colour.red}(${test.duration}ms)`;
+          break;
+        case test.duration > 50:
+          result += ` ${colour.reset}${colour.yellow}(${test.duration}ms)`;
+          break;
+        default:
+          result += ``;
+          break;
+      }
       result += `${colour.reset}`;
-
       return result;
     })
     .join('\n')}\n`;
@@ -41,7 +48,6 @@ function outputSuite(suite, indent = '') {
       .map(suiteIn => outputSuite(suiteIn, `${indent}`))
       .join('\n');
   }
-
   return results;
 }
 
