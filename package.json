@@ -26,7 +26,7 @@
   "dependencies": {
     "@polymer/iron-meta": "^3.0.1",
     "@webcomponents/webcomponentsjs": "^2.6.0",
-    "lit": "^2.0.0-rc.4"
+    "lit": "^2.0.0"
   },
   "devDependencies": {
     "@blockquote/sass-style-template": "^2.0.0",

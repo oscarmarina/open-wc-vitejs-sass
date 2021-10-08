@@ -14,6 +14,5 @@ export default defineConfig({
         format: 'es',
       },
     },
-    manifest: true,
   },
 });
