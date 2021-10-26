@@ -13,17 +13,17 @@
   </style>
 </head>
 <body>
-  <div id="demo"></div>
+  <div id="other"></div>
 
   <script type="module">
     import { html, render } from 'lit';
     import {IronMeta} from '@polymer/iron-meta';
-    import '../my-element-openwc-vitejs.js';
+    import '../define/my-element-openwc-vitejs.js';
 
-    const heading =  new IronMeta({key: 'counter rrrrrrr', value: 'openwc + vite + scss'});
+    const heading =  new IronMeta({key: 'counter other', value: 'openwc + vite + scss'});
     render(
-      html` <my-element-openwc-vitejs .heading=${heading.value}> ${heading.key} </my-element-openwc-vitejs> `,
-      document.querySelector('#demo')
+      html` <my-element-openwc-vitejs .heading=${heading.value}> <span>${heading.key}</span> </my-element-openwc-vitejs> `,
+      document.querySelector('#other')
     );
   </script>
 </body>

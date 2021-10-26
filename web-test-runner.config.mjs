@@ -18,6 +18,17 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     mochaStyleReporter(),
   ],
 
+  coverageConfig: {
+    report: true,
+    reportDir: 'test/coverage',
+    threshold: {
+      statements: 80,
+      branches: 80,
+      functions: 80,
+      lines: 80,
+    },
+  },
+
   /** Filter out lit dev mode logs */
   filterBrowserLogs(log) {
     for (const arg of log.args) {

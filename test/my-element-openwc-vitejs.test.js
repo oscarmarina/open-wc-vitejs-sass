@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { fixture, expect } from '@open-wc/testing';
 
-import '../my-element-openwc-vitejs.js';
+import '../define/my-element-openwc-vitejs.js';
 
 describe('MyElementOpenwcVitejs', () => {
   it('has a default heading "Hey there" and counter 5', async () => {
