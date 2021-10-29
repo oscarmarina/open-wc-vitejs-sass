@@ -7,14 +7,15 @@
   "main": "index.js",
   "module": "index.js",
   "files": [
-    "/src/",
     "/define/",
+    "/src/",
     "index.js",
     "!**/*.scss"
   ],
   "scripts": {
     "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
-    "start-open": "web-dev-server",
+    "start-openwc": "concurrently -k -r \"npm:sass:watch\" \"npm:openwc\"",
+    "openwc": "web-dev-server",
     "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
     "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
     "sass:watch": "sass-style-template",

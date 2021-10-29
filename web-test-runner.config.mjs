@@ -1,6 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 // import { playwrightLauncher } from '@web/test-runner-playwright';
 import { defaultReporter } from '@web/test-runner';
-import {mochaStyleReporter} from '@blockquote/test-runner-mocha-style-reporter';
+import { mochaStyleReporter } from '@blockquote/test-runner-mocha-style-reporter';
 
 const filteredLogs = ['in dev mode'];
 
@@ -26,6 +28,12 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
       branches: 80,
       functions: 80,
       lines: 80,
+    },
+  },
+
+  testFramework: {
+    config: {
+      ui: 'tdd',
     },
   },
 

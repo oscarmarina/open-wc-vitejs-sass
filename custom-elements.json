@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "define/my-element-openwc-vitejs.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "my-element-openwc-vitejs",
+          "declaration": {
+            "name": "MyElementOpenwcVitejs",
+            "module": "/src/MyElementOpenwcVitejs.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/MyElementOpenwcVitejs.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "![Lit](https://img.shields.io/badge/lit-2.0.0-blue)",
+          "name": "MyElementOpenwcVitejs",
+          "members": [
+            {
+              "kind": "method",
+              "name": "__increment"
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Hey there'",
+              "privacy": "public",
+              "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "counter",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "privacy": "public",
+              "attribute": "counter"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "heading",
+              "fieldName": "heading"
+            },
+            {
+              "name": "counter",
+              "fieldName": "counter"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "my-element-openwc-vitejs",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MyElementOpenwcVitejs",
+          "declaration": {
+            "name": "MyElementOpenwcVitejs",
+            "module": "src/MyElementOpenwcVitejs.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/styles/MyElementOpenwcVitejs-styles.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/styles/MyElementOpenwcVitejs-styles.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "index.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MyElementOpenwcVitejs",
+          "declaration": {
+            "name": "MyElementOpenwcVitejs",
+            "module": "./src/MyElementOpenwcVitejs.js"
+          }
+        }
+      ]
+    }
+  ]
+}

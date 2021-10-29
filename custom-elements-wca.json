@@ -1,0 +1,36 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "my-element-openwc-vitejs",
+      "path": "./define/my-element-openwc-vitejs.js",
+      "description": "![Lit](https://img.shields.io/badge/lit-2.0.0-blue)",
+      "attributes": [
+        {
+          "name": "heading",
+          "type": "string",
+          "default": "\"Hey there\""
+        },
+        {
+          "name": "counter",
+          "type": "number",
+          "default": "5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "heading",
+          "attribute": "heading",
+          "type": "string",
+          "default": "\"Hey there\""
+        },
+        {
+          "name": "counter",
+          "attribute": "counter",
+          "type": "number",
+          "default": "5"
+        }
+      ]
+    }
+  ]
+}

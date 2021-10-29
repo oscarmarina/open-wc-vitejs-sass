@@ -1,6 +1,10 @@
 import { html, LitElement } from 'lit';
 import styles from './styles/MyElementOpenwcVitejs-styles.js';
 
+/**
+![Lit](https://img.shields.io/badge/lit-2.0.0-blue)
+*/
+
 export class MyElementOpenwcVitejs extends LitElement {
   static get styles() {
     return [styles];

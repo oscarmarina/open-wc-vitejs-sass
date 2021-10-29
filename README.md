@@ -1,5 +1,7 @@
 # my-element-openwc-vitejs
 
+![Lit](https://img.shields.io/badge/lit-2.0.0-blue)
+
 ## Properties
 
 | Property  | Attribute | Type     | Default     |

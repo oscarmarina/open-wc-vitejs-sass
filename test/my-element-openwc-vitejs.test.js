@@ -1,72 +1,84 @@
-import { html } from 'lit';
-import { fixture, expect } from '@open-wc/testing';
+/* eslint-disable import/no-extraneous-dependencies */
+import { html, fixture, assert, fixtureCleanup } from '@open-wc/testing';
 
 import '../define/my-element-openwc-vitejs.js';
 
-describe('MyElementOpenwcVitejs', () => {
-  it('has a default heading "Hey there" and counter 5', async () => {
-    const el = await fixture(
-      html`<my-element-openwc-vitejs></my-element-openwc-vitejs>`
-    );
+suite('MyElementOpenwcVitejs', () => {
+  let el;
 
-    expect(el.heading).to.equal('Hey there');
-    expect(el.counter).to.equal(5);
+  teardown(() => fixtureCleanup());
+
+  suite('Default', () => {
+    setup(async () => {
+      el = await fixture(html` <my-element-openwc-vitejs></my-element-openwc-vitejs> `);
+      await el.updateComplete;
+    });
+
+    test('has a default heading "Hey there" and counter 5', async () => {
+      assert.equal(el.heading, 'Hey there');
+      assert.equal(el.counter, 5);
+    });
+
+    suite('Semantic Dom and a11y', () => {
+      test('SHADOW DOM - Structure test', () => {
+        assert.shadowDom.equalSnapshot(el, { ignoreAttributes: ['id'] });
+      });
+
+      test('LIGHT DOM - Structure test', () => {
+        assert.lightDom.equalSnapshot(el, { ignoreAttributes: ['id'] });
+      });
+      test('a11y', async () => {
+        assert.isAccessible(el);
+      });
+    });
+
+    suite('Events ', () => {
+      setup(async () => {
+        el = await fixture(html` <my-element-openwc-vitejs></my-element-openwc-vitejs> `);
+        await el.updateComplete;
+      });
+
+      test('increases the counter on button click', async () => {
+        el.shadowRoot.querySelector('button').click();
+        assert.equal(el.counter, 6);
+      });
+    });
   });
 
-  it('increases the counter on button click', async () => {
-    const el = await fixture(
-      html`<my-element-openwc-vitejs></my-element-openwc-vitejs>`
-    );
-    el.shadowRoot.querySelector('button').click();
+  suite('Override ', () => {
+    setup(async () => {
+      el = await fixture(
+        html` <my-element-openwc-vitejs heading="attribute heading"></my-element-openwc-vitejs> `,
+      );
+      await el.updateComplete;
+    });
 
-    expect(el.counter).to.equal(6);
+    test('can override the heading via attribute', async () => {
+      assert.equal(el.heading, 'attribute heading');
+    });
   });
+  suite('Override CLONE - Skip', () => {
+    setup(async () => {
+      el = await fixture(
+        html` <my-element-openwc-vitejs heading="attribute heading"></my-element-openwc-vitejs> `,
+      );
+      await el.updateComplete;
+    });
 
-  it('can override the heading via attribute', async () => {
-    const el = await fixture(
-      html`<my-element-openwc-vitejs
-        heading="attribute heading"
-      ></my-element-openwc-vitejs>`
-    );
-
-    expect(el.heading).to.equal('attribute heading');
+    test.skip('can override the heading via attribute', async () => {
+      assert.equal(el.heading, 'attribute heading');
+    });
   });
+  suite('Override CLONE - Error', () => {
+    setup(async () => {
+      el = await fixture(
+        html` <my-element-openwc-vitejs heading="attribute heading"></my-element-openwc-vitejs> `,
+      );
+      await el.updateComplete;
+    });
 
-  it('passes the a11y audit', async () => {
-    const el = await fixture(
-      html`<my-element-openwc-vitejs></my-element-openwc-vitejs>`
-    );
-
-    await expect(el).shadowDom.to.be.accessible();
-  });
-});
-
-describe('MyElementOpenwcVitejs DUPLICATE Fail - Skip', () => {
-  it.skip('has a default heading "Hey there" and counter 5', async () => {
-    const el = await fixture(
-      html`<my-element-openwc-vitejs></my-element-openwc-vitejs>`
-    );
-
-    expect(el.heading).to.equal('Hey there');
-    expect(el.counter).to.equal(5);
-  });
-
-  it('increases the counter on button click', async () => {
-    const el = await fixture(
-      html`<my-element-openwc-vitejs></my-element-openwc-vitejs>`
-    );
-    el.shadowRoot.querySelector('button').click();
-
-    expect(el.counter).to.equal(16);
-  });
-
-  it('can override the heading via attribute', async () => {
-    const el = await fixture(
-      html`<my-element-openwc-vitejs
-        heading="attribute heading"
-      ></my-element-openwc-vitejs>`
-    );
-
-    expect(el.heading).to.equal('attribute heading');
+    test('can override the heading via attribute', async () => {
+      assert.equal(el.heading, 'attribute heading 2');
+    });
   });
 });
