@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { html, fixture, assert, fixtureCleanup } from '@open-wc/testing';
 
 import '../define/my-element-openwc-vitejs.js';
@@ -10,7 +9,9 @@ suite('MyElementOpenwcVitejs', () => {
 
   suite('Default', () => {
     setup(async () => {
-      el = await fixture(html` <my-element-openwc-vitejs></my-element-openwc-vitejs> `);
+      el = await fixture(
+        html` <my-element-openwc-vitejs></my-element-openwc-vitejs> `
+      );
       await el.updateComplete;
     });
 
@@ -34,7 +35,9 @@ suite('MyElementOpenwcVitejs', () => {
 
     suite('Events ', () => {
       setup(async () => {
-        el = await fixture(html` <my-element-openwc-vitejs></my-element-openwc-vitejs> `);
+        el = await fixture(
+          html` <my-element-openwc-vitejs></my-element-openwc-vitejs> `
+        );
         await el.updateComplete;
       });
 
@@ -48,7 +51,11 @@ suite('MyElementOpenwcVitejs', () => {
   suite('Override ', () => {
     setup(async () => {
       el = await fixture(
-        html` <my-element-openwc-vitejs heading="attribute heading"></my-element-openwc-vitejs> `,
+        html`
+          <my-element-openwc-vitejs
+            heading="attribute heading"
+          ></my-element-openwc-vitejs>
+        `
       );
       await el.updateComplete;
     });
@@ -60,7 +67,11 @@ suite('MyElementOpenwcVitejs', () => {
   suite('Override CLONE - Skip', () => {
     setup(async () => {
       el = await fixture(
-        html` <my-element-openwc-vitejs heading="attribute heading"></my-element-openwc-vitejs> `,
+        html`
+          <my-element-openwc-vitejs
+            heading="attribute heading"
+          ></my-element-openwc-vitejs>
+        `
       );
       await el.updateComplete;
     });
@@ -72,7 +83,11 @@ suite('MyElementOpenwcVitejs', () => {
   suite('Override CLONE - Error', () => {
     setup(async () => {
       el = await fixture(
-        html` <my-element-openwc-vitejs heading="attribute heading"></my-element-openwc-vitejs> `,
+        html`
+          <my-element-openwc-vitejs
+            heading="attribute heading"
+          ></my-element-openwc-vitejs>
+        `
       );
       await el.updateComplete;
     });

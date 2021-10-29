@@ -1,6 +1,5 @@
-/* eslint-disable no-shadow */
 import { defineConfig } from 'vite';
-import html from '@web/rollup-plugin-html';
+import pluginHtml from '@web/rollup-plugin-html';
 import copy from 'rollup-plugin-copy';
 import filesize from 'rollup-plugin-filesize';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
@@ -58,7 +57,7 @@ const copyConfig = {
 
 export default defineConfig({
   plugins: [
-    html({
+    pluginHtml({
       transformHtml: [
         html =>
           html.replace(

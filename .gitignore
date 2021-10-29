@@ -12,6 +12,7 @@
 ## testing
 /coverage/
 **/coverage/
+__snapshots__
 
 ## temp folders
 /.tmp/
