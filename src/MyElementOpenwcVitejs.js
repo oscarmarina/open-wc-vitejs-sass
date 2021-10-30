@@ -6,6 +6,10 @@ import styles from './styles/MyElementOpenwcVitejs-styles.js';
 */
 
 export class MyElementOpenwcVitejs extends LitElement {
+  static get is() {
+    return 'my-element-openwc-vitejs';
+  }
+
   static get styles() {
     return [styles];
   }
