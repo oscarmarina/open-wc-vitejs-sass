@@ -9,7 +9,6 @@
       "exports": [
         {
           "kind": "custom-element-definition",
-          "name": "my-element-openwc-vitejs",
           "declaration": {
             "name": "MyElementOpenwcVitejs",
             "module": "/src/MyElementOpenwcVitejs.js"
@@ -26,6 +25,11 @@
           "description": "![Lit](https://img.shields.io/badge/lit-2.0.0-blue)",
           "name": "MyElementOpenwcVitejs",
           "members": [
+            {
+              "kind": "field",
+              "name": "is",
+              "static": true
+            },
             {
               "kind": "method",
               "name": "__increment"
@@ -65,7 +69,6 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "my-element-openwc-vitejs",
           "customElement": true
         }
       ],

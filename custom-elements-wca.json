@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "my-element-openwc-vitejs",
-      "path": "./define/my-element-openwc-vitejs.js",
+      "path": "./src/MyElementOpenwcVitejs.js",
       "description": "![Lit](https://img.shields.io/badge/lit-2.0.0-blue)",
       "attributes": [
         {
