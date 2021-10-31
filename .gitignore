@@ -8,6 +8,7 @@
 ## npm
 /node_modules/
 /npm-debug.log
+*-debug.log
 
 ## testing
 /coverage/
@@ -24,3 +25,9 @@ __snapshots__
 
 storybook-static
 
+/packages/*/package-lock.json
+/packages/*/Jenkinsfile
+/packages/*/build
+/packages/*/node_modules
+/packages/*/.editorconfig
+/packages/*/.gitignore

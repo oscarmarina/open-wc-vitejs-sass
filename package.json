@@ -1,9 +1,13 @@
 {
-  "name": "my-element-openwc-vitejs",
+  "name": "@blockquote/my-element-openwc-vitejs",
+  "version": "1.0.0-rc.1",
   "description": "Webcomponent my-element-openwc-vitejs following open-wc recommendations",
+  "keywords": [
+    "lit",
+    "web-component"
+  ],
   "license": "MIT",
   "author": "my-element-openwc-vitejs",
-  "version": "1.0.0-rc.1",
   "main": "index.js",
   "module": "index.js",
   "files": [
@@ -13,57 +17,21 @@
     "!**/*.scss"
   ],
   "scripts": {
-    "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
-    "start-openwc": "concurrently -k -r \"npm:sass:watch\" \"npm:openwc\"",
-    "openwc": "web-dev-server",
+    "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
     "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "postinstall": "npm run sort:package",
     "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
+    "openwc": "web-dev-server",
     "sass:watch": "sass-style-template",
+    "sort:package": "npx sort-package-json",
+    "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
+    "start:openwc": "concurrently -k -r \"npm:sass:watch\" \"npm:openwc\"",
     "test": "web-test-runner --coverage",
     "test:watch": "web-test-runner --watch",
     "vite": "vite",
     "vite-build": "vite build",
     "vite-preview": "vite preview",
-    "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
     "wca": "wca analyze \"{src,define}/**/*.{js,ts}\" \"index.js\" --visibility private --outFile custom-elements-wca.json && wca analyze \"{src,define}/**/*.{js,ts}\" \"index.js\" --outFile README.md"
-  },
-  "dependencies": {
-    "@polymer/iron-meta": "^3.0.1",
-    "lit": "^2.0.0"
-  },
-  "devDependencies": {
-    "@blockquote/sass-style-template": "^2.0.0",
-    "@blockquote/test-runner-mocha-style-reporter": "^1.0.0",
-    "@custom-elements-manifest/analyzer": "^0.5.3",
-    "@open-wc/eslint-config": "^7.0.0",
-    "@open-wc/testing": "^3.0.0",
-    "@ungap/global-this": "^0.4.4",
-    "@web/dev-server": "^0.1.21",
-    "@web/rollup-plugin-html": "^1.10.1",
-    "@web/test-runner": "^0.13.16",
-    "@webcomponents/shadycss": "^1.11.0",
-    "@webcomponents/webcomponentsjs": "^2.6.0",
-    "concurrently": "^6.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint": "^7.32.0",
-    "husky": "^7.0.0",
-    "lint-staged": "^11.0.0",
-    "prettier": "^2.3.2",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-filesize": "^9.1.1",
-    "rollup-plugin-minify-html-literals": "^1.2.6",
-    "vite": "^2.6.7",
-    "web-component-analyzer": "^2.0.0-next.3"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@open-wc",
-      "prettier"
-    ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "arrowParens": "avoid"
   },
   "husky": {
     "hooks": {
@@ -75,6 +43,45 @@
       "eslint --fix",
       "prettier --write"
     ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config",
+      "eslint-config-prettier"
+    ]
+  },
+  "dependencies": {
+    "@polymer/iron-meta": "^3.0.1",
+    "lit": "^2.0.0"
+  },
+  "devDependencies": {
+    "@blockquote/sass-style-template": "^2.0.0",
+    "@blockquote/test-runner-mocha-style-reporter": "^1.0.0",
+    "@custom-elements-manifest/analyzer": "^0.5.3",
+    "@open-wc/eslint-config": "^7.0.0",
+    "@open-wc/testing": "next",
+    "@ungap/global-this": "^0.4.4",
+    "@web/dev-server": "^0.1.25",
+    "@web/rollup-plugin-html": "^1.10.1",
+    "@web/test-runner": "^0.13.20",
+    "@webcomponents/shadycss": "^1.11.0",
+    "@webcomponents/webcomponentsjs": "^2.6.0",
+    "concurrently": "^6.2.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.4.1",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-filesize": "^9.1.1",
+    "rollup-plugin-minify-html-literals": "^1.2.6",
+    "sort-package-json": "^1.52.0",
+    "vite": "^2.6.7",
+    "web-component-analyzer": "^2.0.0-next.3"
   },
   "customElements": "custom-elements.json"
 }
