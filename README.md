@@ -1,18 +1,27 @@
 # OPEN-WC & VITEJS & SCSS
 
-- ## [open-wc](https://github.com/open-wc/open-wc)
+## Example generated using
+- ### [npm init @blockquote/wc](https://github.com/oscarmarina/create-wc)
 
-  - scaffold
-  - lint
-  - format
-  - test
+<hr>
+<br>
 
-- ## [vitejs](https://vitejs.dev/)
+## Development tools:
 
-  - dev server
-  - build command
+- ### [open-wc](https://open-wc.org/) & [modern-web](https://modern-web.dev/)
 
-- ## [sass](https://github.com/oscarmarina/sass-style-template)
+  - Scaffold
+  - Lint (es-lint)
+  - Format (prettier)
+  - Test (web-test-runner)
+
+- ### [vitejs](https://vitejs.dev/)
+
+  - Dev Server
+  - Optimized Build
+  - TypeScript
+
+- ### [sass](https://github.com/oscarmarina/sass-style-template)
   - SCSS watcher with autoprefixer
 
 <hr>
@@ -30,14 +39,15 @@ npm i
   import 'my-element-openwc-vitejs/my-element-openwc-vitejs.js';
 </script>
 
-<my-element-openwc-vitejs></my-element-openwc-vitejs>
+<my-element-openwc-vitejs>light dom</my-element-openwc-vitejs>
 ```
 
 <hr>
+<br>
 
-## open-wc
+## open-wc & modern-web
 
-### Linting and formatting
+### - Linting and formatting
 
 To scan the project for linting and formatting errors, run
 
@@ -51,7 +61,41 @@ To automatically fix linting and formatting errors, run
 npm run format
 ```
 
-### Testing with Web Test Runner
+### - Testing with Web Test Runner
+
+- mocha-style reporter
+- coverage config
+- TDD option
+
+<br>
+
+### web-test-runner.config
+
+```js
+import { defaultReporter } from '@web/test-runner';
+import { mochaStyleReporter } from '@blockquote/test-runner-mocha-style-reporter';
+
+export default {
+  reporters: [defaultReporter(), mochaStyleReporter()],
+
+  coverageConfig: {
+    report: true,
+    reportDir: 'test/coverage',
+    threshold: {
+      statements: 80,
+      branches: 80,
+      functions: 80,
+      lines: 80,
+    },
+  },
+
+  testFramework: {
+    config: {
+      ui: 'tdd',
+    },
+  },
+};
+```
 
 To execute a single test run:
 
@@ -65,15 +109,10 @@ To run the tests in interactive watch mode run:
 npm run test:watch
 ```
 
-### Tooling configs
-
-For most of the tools, the configuration is in the `package.json` to minimize the amount of files in your project.
-
-If you customize the configuration a lot, you can consider moving them to individual files.
-
 <hr>
+<br>
 
-## vitejs
+## vite
 
 ### dev server
 
@@ -83,39 +122,59 @@ npm run vite
 
 ### build command
 
-- [vitejs - static-deploy](https://vitejs.dev/guide/static-deploy.html)
 
 ```bash
 npm run vite-build
 ```
+- [vitejs - server static-deploy](https://vitejs.dev/guide/static-deploy.html)
+
+```bash
+npm run vite-previes
+```
 
 <hr>
+<br>
 
-### sass
+## sass
 
-SCSS watcher with autoprefixer
+### scss watcher with autoprefixer
 
 ```bash
 npm run sass:watch
 ```
+
+<hr>
+<br>
+<br>
+
+### Start:
+
+#### `"start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\""`
+
+```bash
+npm start
+```
+
 <hr>
 
 ## scripts - package.json
 
 ```json
 "scripts": {
-    "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
-    "start-openwc": "concurrently -k -r \"npm:sass:watch\" \"npm:openwc\"",
-    "openwc": "web-dev-server",
+    "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
     "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "postinstall": "npm run sort:package",
     "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
+    "openwc": "web-dev-server",
     "sass:watch": "sass-style-template",
+    "sort:package": "npx sort-package-json",
+    "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
+    "start:openwc": "concurrently -k -r \"npm:sass:watch\" \"npm:openwc\"",
     "test": "web-test-runner --coverage",
     "test:watch": "web-test-runner --watch",
     "vite": "vite",
     "vite-build": "vite build",
     "vite-preview": "vite preview",
-    "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
     "wca": "wca analyze \"{src,define}/**/*.{js,ts}\" \"index.js\" --visibility private --outFile custom-elements-wca.json && wca analyze \"{src,define}/**/*.{js,ts}\" \"index.js\" --outFile README.md"
   },
 ```
