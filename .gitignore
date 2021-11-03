@@ -18,9 +18,11 @@ __snapshots__
 ## temp folders
 /.tmp/
 
-# build
+## build
+*.config.js
 /_site/
 /dist/
+/build/
 /out-tsc/
 
 storybook-static

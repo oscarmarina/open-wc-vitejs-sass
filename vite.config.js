@@ -48,7 +48,6 @@ const copyConfig = {
       src: 'node_modules/@webcomponents/shadycss/custom-style-interface.min.js.map',
       dest: 'dist/web_modules/@webcomponents/shadycss',
     },
-    { src: 'index.html', dest: 'dist' },
   ],
   hook: 'writeBundle',
 };
@@ -59,19 +58,17 @@ export default defineConfig({
   plugins: [
     pluginHtml({
       transformHtml: [
-        html =>
+        (html) =>
           html.replace(
             '<meta charset="utf-8">',
             `
           <meta charset="utf-8">
-          <script src="../web_modules/@ungap/global-this/index.js"></script>
-          <script src="../web_modules/lit/polyfill-support.js"></script>
-          <script src="../web_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-          <script src="../web_modules/@webcomponents/shadycss/custom-style-interface.min.js"></script>`
+          <script src="./web_modules/@ungap/global-this/index.js"></script>
+          <script src="./web_modules/lit/polyfill-support.js"></script>
+          <script src="./web_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+          <script src="./web_modules/@webcomponents/shadycss/custom-style-interface.min.js"></script>`,
           ),
       ],
-      flattenOutput: false,
-      extractAssets: false,
     }),
 
     minifyHTML(minifyHTMLLiteralsConfig),
@@ -87,5 +84,4 @@ export default defineConfig({
       },
     },
   },
-  preserveEntrySignatures: false,
 });

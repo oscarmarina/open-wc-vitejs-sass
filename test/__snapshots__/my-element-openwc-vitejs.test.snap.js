@@ -4,10 +4,8 @@ export const snapshots = {};
 snapshots["MyElementOpenwcVitejs Default Semantic Dom and a11y SHADOW DOM - Structure test"] = 
 `<h2>
   Hey there (
-  <span>
-    <slot>
-    </slot>
-  </span>
+  <slot>
+  </slot>
   ) 5
 </h2>
 <button>

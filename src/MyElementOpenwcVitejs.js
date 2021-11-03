@@ -30,7 +30,7 @@ export class MyElementOpenwcVitejs extends LitElement {
   render() {
     return html`
       <h2>
-        ${this.heading} (<span><slot></slot></span>) ${this.counter}
+        ${this.heading} (<slot></slot>) ${this.counter}
       </h2>
       <button @click=${this.__increment}>increment</button>
     `;

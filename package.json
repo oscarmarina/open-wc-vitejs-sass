@@ -50,8 +50,8 @@
   },
   "eslintConfig": {
     "extends": [
-      "@open-wc/eslint-config",
-      "eslint-config-prettier"
+      "@open-wc",
+      "prettier"
     ]
   },
   "dependencies": {
@@ -71,11 +71,11 @@
     "@webcomponents/shadycss": "^1.11.0",
     "@webcomponents/webcomponentsjs": "^2.6.0",
     "concurrently": "^6.2.1",
-    "eslint": "^7.32.0",
+    "eslint": "^8.0.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.0",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.4.1",
+    "prettier": "^2.3.2",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-filesize": "^9.1.1",
     "rollup-plugin-minify-html-literals": "^1.2.6",
