@@ -1,8 +1,13 @@
-# \<my-element-openwc-vitejs>
+# OPEN-WC & VITEJS & SCSS
 
 ![Lit](https://img.shields.io/badge/lit-2.0.0-blue)
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+## Example generated using
+
+- ### [npm init @blockquote/wc](https://github.com/oscarmarina/create-wc)
+
+<hr>
+<br>
 
 ## Installation
 
