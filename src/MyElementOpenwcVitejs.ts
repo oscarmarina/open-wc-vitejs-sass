@@ -1,4 +1,5 @@
 import { html, LitElement } from 'lit';
+import { property } from 'lit/decorators.js';
 import styles from './styles/MyElementOpenwcVitejs-styles.js';
 
 export class MyElementOpenwcVitejs extends LitElement {
@@ -6,33 +7,21 @@ export class MyElementOpenwcVitejs extends LitElement {
     return 'my-element-openwc-vitejs';
   }
 
-  static get styles() {
-    return [styles];
-  }
+  static override styles = [styles];
 
-  static get properties() {
-    return {
-      /**
-       * The heading to say "Hello" to.
-       * @type {string}
-       */
-      heading: { type: String },
+  /**
+   * The heading to say "Hello" to.
+   */
+  @property({ type: String })
+  heading = 'Hey there';
 
-      /**
-       * The number of times the button has been clicked.
-       * @type {number}
-       */
-      counter: { type: Number },
-    };
-  }
+  /**
+   * The number of times the button has been clicked.
+   */
+  @property({ type: Number })
+  counter = 5;
 
-  constructor() {
-    super();
-    this.heading = 'Hey there';
-    this.counter = 5;
-  }
-
-  render() {
+  override render() {
     return html`
       <h1>${this.sayHello(this.heading)}!</h1>
       <button @click=${this._onClick}>Counter: ${this.counter}</button>
@@ -41,17 +30,17 @@ export class MyElementOpenwcVitejs extends LitElement {
     `;
   }
 
-  _onClick() {
+  private _onClick() {
     this.counter += 1;
     this.dispatchEvent(new CustomEvent('counter-changed'));
   }
 
   /**
    * Formats a greeting
-   * @param heading {string} The heading to say "Hello" to
+   * @param heading The heading to say "Hello" to
    * @returns {string} A greeting directed at `heading`
    */
-  sayHello(heading) {
+  sayHello(heading: string): string {
     return `Hello, ${heading}`;
   }
 }

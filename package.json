@@ -9,29 +9,33 @@
   ],
   "license": "MIT",
   "author": "my-element-openwc-vitejs",
-  "main": "index.js",
-  "module": "index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./my-element-openwc-vitejs.js": "./dist/define/my-element-openwc-vitejs.js"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "files": [
-    "/define/",
-    "/src/",
-    "index.js",
-    "!/**/*.scss"
+    "/dist/",
+    "/dist/index.*",
+    "!/dist/test/"
   ],
   "scripts": {
     "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
     "analyze:watch": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\" --watch",
-    "build": "echo \"This is not a TypeScript project, so no need to build.\"",
+    "build": "npm run build:tsc && npm run dev:vite",
+    "build:tsc": "tsc",
     "dev:vite": "vite build",
     "format": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" . --fix --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .gitignore",
     "postinstall": "npm run sort:package",
     "lint": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" . --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .gitignore",
     "preview:vite": "vite preview",
-    "sass:watch": "sass-style-template",
+    "sass:watch": "sass-style-template -j ts",
     "sort:package": "npx sort-package-json",
     "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
-    "start:wds": "concurrently -k -r \"npm:sass:watch\" \"npm:wds\"",
-    "test": "wtr --coverage",
-    "test:watch": "wtr --watch",
+    "start:wds": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"npm:sass:watch\" \"npm:wds\"",
+    "test": "tsc && OUTDIR=dist wtr --coverage",
+    "test:watch": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"OUTDIR=dist wtr --watch\"",
     "vite": "vite",
     "wds": "web-dev-server"
   },
@@ -51,13 +55,31 @@
     "trailingComma": "all"
   },
   "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
     "extends": [
       "prettier",
       "@open-wc"
     ],
     "rules": {
       "class-methods-use-this": "off",
+      "indent": [
+        "error",
+        2,
+        {
+          "SwitchCase": 1,
+          "ignoredNodes": [
+            "PropertyDefinition"
+          ]
+        }
+      ],
+      "no-unused-vars": "off",
       "object-curly-newline": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error"
+      ],
       "import/extensions": [
         "error",
         "always",
@@ -79,6 +101,8 @@
     "@custom-elements-manifest/to-markdown": "^0.1.0",
     "@open-wc/eslint-config": "^7.0.0",
     "@open-wc/testing": "next",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "@ungap/global-this": "^0.4.4",
     "@web/dev-server": "^0.1.25",
     "@web/rollup-plugin-html": "^1.10.1",
@@ -95,6 +119,8 @@
     "rollup-plugin-minify-html-literals": "^1.2.6",
     "rollup-plugin-summary": "^1.3.0",
     "sort-package-json": "^1.52.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.4",
     "vite": "^2.7.0-beta.7"
   },
   "customElements": "custom-elements.json"
