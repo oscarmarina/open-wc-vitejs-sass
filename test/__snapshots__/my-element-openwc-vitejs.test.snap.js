@@ -2,15 +2,15 @@
 export const snapshots = {};
 
 snapshots["MyElementOpenwcVitejs Default Semantic Dom and a11y SHADOW DOM - Structure test"] = 
-`<h2>
-  Hey there (
-  <slot>
-  </slot>
-  ) 5
-</h2>
+`<h1>
+  Hello, Hey there!
+</h1>
 <button>
-  increment
+  Counter: 5
 </button>
+<hr>
+<slot>
+</slot>
 `;
 /* end snapshot MyElementOpenwcVitejs Default Semantic Dom and a11y SHADOW DOM - Structure test */
 

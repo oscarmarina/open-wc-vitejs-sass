@@ -4,7 +4,8 @@
   "description": "Webcomponent my-element-openwc-vitejs following open-wc recommendations",
   "keywords": [
     "lit",
-    "web-component"
+    "web-component",
+    "lit-element"
   ],
   "license": "MIT",
   "author": "my-element-openwc-vitejs",
@@ -14,24 +15,25 @@
     "/define/",
     "/src/",
     "index.js",
-    "!**/*.scss"
+    "!/**/*.scss"
   ],
   "scripts": {
     "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
-    "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "analyze:watch": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\" --watch",
+    "build": "echo \"This is not a TypeScript project, so no need to build.\"",
+    "dev:vite": "vite build",
+    "format": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" . --fix --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .gitignore",
     "postinstall": "npm run sort:package",
-    "lint": "eslint --ext .js,.html . --ignore-path .gitignore && prettier \"**/*.js\" --check --ignore-path .gitignore",
-    "openwc": "web-dev-server",
+    "lint": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" . --ignore-path .gitignore && prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .gitignore",
+    "preview:vite": "vite preview",
     "sass:watch": "sass-style-template",
     "sort:package": "npx sort-package-json",
     "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
-    "start:openwc": "concurrently -k -r \"npm:sass:watch\" \"npm:openwc\"",
-    "test": "web-test-runner --coverage",
-    "test:watch": "web-test-runner --watch",
+    "start:wds": "concurrently -k -r \"npm:sass:watch\" \"npm:wds\"",
+    "test": "wtr --coverage",
+    "test:watch": "wtr --watch",
     "vite": "vite",
-    "vite-build": "vite build",
-    "vite-preview": "vite preview",
-    "wca": "wca analyze \"{src,define}/**/*.{js,ts}\" \"index.js\" --visibility private --outFile custom-elements-wca.json && wca analyze \"{src,define}/**/*.{js,ts}\" \"index.js\" --outFile README.md"
+    "wds": "web-dev-server"
   },
   "husky": {
     "hooks": {
@@ -39,49 +41,61 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write"
+    "**/*.{js,ts,json,html}": [
+      "npm run format"
     ]
   },
   "prettier": {
     "arrowParens": "avoid",
-    "singleQuote": true
+    "singleQuote": true,
+    "trailingComma": "all"
   },
   "eslintConfig": {
     "extends": [
-      "@open-wc",
-      "prettier"
-    ]
+      "prettier",
+      "@open-wc"
+    ],
+    "rules": {
+      "class-methods-use-this": "off",
+      "object-curly-newline": "off",
+      "import/extensions": [
+        "error",
+        "always",
+        {
+          "ignorePackages": true
+        }
+      ],
+      "import/no-unresolved": "off"
+    }
   },
   "dependencies": {
     "@polymer/iron-meta": "^3.0.1",
-    "lit": "^2.0.0"
+    "lit": "^2.0.2"
   },
   "devDependencies": {
     "@blockquote/sass-style-template": "^2.0.0",
     "@blockquote/test-runner-mocha-style-reporter": "^1.0.0",
     "@custom-elements-manifest/analyzer": "^0.5.3",
+    "@custom-elements-manifest/to-markdown": "^0.1.0",
     "@open-wc/eslint-config": "^7.0.0",
     "@open-wc/testing": "next",
     "@ungap/global-this": "^0.4.4",
     "@web/dev-server": "^0.1.25",
     "@web/rollup-plugin-html": "^1.10.1",
-    "@web/test-runner": "^0.13.20",
+    "@web/test-runner": "next",
     "@webcomponents/shadycss": "^1.11.0",
     "@webcomponents/webcomponentsjs": "^2.6.0",
-    "concurrently": "^6.2.1",
+    "concurrently": "^6.4.0",
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^8.3.0",
-    "husky": "^7.0.0",
-    "lint-staged": "^11.0.0",
-    "prettier": "^2.3.2",
+    "husky": "^4.3.8",
+    "lint-staged": "^12.0.0",
+    "prettier": "^2.4.1",
     "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-filesize": "^9.1.1",
     "rollup-plugin-minify-html-literals": "^1.2.6",
+    "rollup-plugin-summary": "^1.3.0",
     "sort-package-json": "^1.52.0",
-    "vite": "^2.6.7",
-    "web-component-analyzer": "^2.0.0-next.3"
+    "vite": "^2.7.0-beta.7"
   },
   "customElements": "custom-elements.json"
 }

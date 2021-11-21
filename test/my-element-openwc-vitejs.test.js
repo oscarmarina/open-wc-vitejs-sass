@@ -10,7 +10,7 @@ suite('MyElementOpenwcVitejs', () => {
   suite('Default', () => {
     setup(async () => {
       el = await fixture(
-        html` <my-element-openwc-vitejs></my-element-openwc-vitejs> `
+        html` <my-element-openwc-vitejs></my-element-openwc-vitejs> `,
       );
       await el.updateComplete;
     });
@@ -29,14 +29,14 @@ suite('MyElementOpenwcVitejs', () => {
         assert.lightDom.equalSnapshot(el, { ignoreAttributes: ['id'] });
       });
       test('a11y', async () => {
-        assert.isAccessible(el);
+        await assert.isAccessible(el);
       });
     });
 
     suite('Events ', () => {
       setup(async () => {
         el = await fixture(
-          html` <my-element-openwc-vitejs></my-element-openwc-vitejs> `
+          html` <my-element-openwc-vitejs></my-element-openwc-vitejs> `,
         );
         await el.updateComplete;
       });
@@ -55,7 +55,7 @@ suite('MyElementOpenwcVitejs', () => {
           <my-element-openwc-vitejs
             heading="attribute heading"
           ></my-element-openwc-vitejs>
-        `
+        `,
       );
       await el.updateComplete;
     });
@@ -71,7 +71,7 @@ suite('MyElementOpenwcVitejs', () => {
           <my-element-openwc-vitejs
             heading="attribute heading"
           ></my-element-openwc-vitejs>
-        `
+        `,
       );
       await el.updateComplete;
     });
@@ -87,7 +87,7 @@ suite('MyElementOpenwcVitejs', () => {
           <my-element-openwc-vitejs
             heading="attribute heading"
           ></my-element-openwc-vitejs>
-        `
+        `,
       );
       await el.updateComplete;
     });

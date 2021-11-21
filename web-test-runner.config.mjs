@@ -1,14 +1,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
+/* process.env.npm_lifecycle_event, process.env.npm_lifecycle_script, process.env.OUTDIR; */
 
 // import { playwrightLauncher } from '@web/test-runner-playwright';
 import { defaultReporter } from '@web/test-runner';
 import { mochaStyleReporter } from '@blockquote/test-runner-mocha-style-reporter';
 
 const filteredLogs = ['in dev mode'];
+const outDir = process.env.OUTDIR || '.';
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   /** Test files to run */
-  files: 'test/**/*.test.js',
+  files: [`${outDir}/test/**/*.test.js`],
 
   /** Resolve bare module imports */
   nodeResolve: {
@@ -22,7 +24,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
 
   coverageConfig: {
     report: true,
-    reportDir: 'test/coverage',
+    reportDir: `${outDir}/test/coverage`,
     threshold: {
       statements: 80,
       branches: 80,

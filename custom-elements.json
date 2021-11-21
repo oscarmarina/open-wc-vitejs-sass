@@ -22,7 +22,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "![Lit](https://img.shields.io/badge/lit-2.0.0-blue)",
+          "description": "",
           "name": "MyElementOpenwcVitejs",
           "members": [
             {
@@ -32,7 +32,26 @@
             },
             {
               "kind": "method",
-              "name": "__increment"
+              "name": "_onClick"
+            },
+            {
+              "kind": "method",
+              "name": "sayHello",
+              "parameters": [
+                {
+                  "name": "heading",
+                  "description": "The heading to say \"Hello\" to",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Formats a greeting",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
             },
             {
               "kind": "field",
@@ -42,6 +61,7 @@
               },
               "default": "'Hey there'",
               "privacy": "public",
+              "description": "The heading to say \"Hello\" to.",
               "attribute": "heading"
             },
             {
@@ -52,16 +72,33 @@
               },
               "default": "5",
               "privacy": "public",
+              "description": "The number of times the button has been clicked.",
               "attribute": "counter"
+            }
+          ],
+          "events": [
+            {
+              "name": "counter-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
             }
           ],
           "attributes": [
             {
               "name": "heading",
+              "description": "The heading to say \"Hello\" to.",
+              "type": {
+                "text": "string"
+              },
               "fieldName": "heading"
             },
             {
               "name": "counter",
+              "description": "The number of times the button has been clicked.",
+              "type": {
+                "text": "number"
+              },
               "fieldName": "counter"
             }
           ],
