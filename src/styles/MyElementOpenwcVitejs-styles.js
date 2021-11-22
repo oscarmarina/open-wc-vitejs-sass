@@ -5,8 +5,6 @@ export default css`
   :host {
     display: block;
     box-sizing: border-box;
-    color: forestgreen;
-    font-size: 44px;
   }
 
   :host([hidden]),
