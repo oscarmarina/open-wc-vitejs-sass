@@ -6,6 +6,9 @@
 
 - ### [npm init @blockquote/wc](https://github.com/oscarmarina/create-wc)
 
+- #### demo online
+  - [https://heuristic-noether-efdd52.netlify.app/](https://heuristic-noether-efdd52.netlify.app/)
+  - [https://heuristic-noether-efdd52.netlify.app//other.html](https://heuristic-noether-efdd52.netlify.app//other.html)
 <hr>
 <br>
 
