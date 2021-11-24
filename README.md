@@ -9,8 +9,8 @@
 - #### demo online
   - [https://sharp-fermi-2f88f5.netlify.app](https://sharp-fermi-2f88f5.netlify.app)
   - [https://sharp-fermi-2f88f5.netlify.app/other.html](https://sharp-fermi-2f88f5.netlify.app/other.html)
-<hr>
-<br>
+  <hr>
+  <br>
 
 ## Installation
 
