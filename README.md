@@ -9,8 +9,8 @@
 - #### demo online
   - [https://heuristic-noether-efdd52.netlify.app/](https://heuristic-noether-efdd52.netlify.app/)
   - [https://heuristic-noether-efdd52.netlify.app//other.html](https://heuristic-noether-efdd52.netlify.app//other.html)
-<hr>
-<br>
+  <hr>
+  <br>
 
 ## Installation
 
