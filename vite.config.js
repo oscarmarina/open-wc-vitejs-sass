@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 import { defineConfig } from 'vite';
 import pluginHtml from '@web/rollup-plugin-html';
 import copy from 'rollup-plugin-copy';
@@ -50,7 +51,10 @@ const copyConfig = {
   hook: 'writeBundle',
 };
 
-// https://vitejs.dev/config/
+/**
+ * https://vitejs.dev/config/
+ * https://vite-rollup-plugins.patak.dev/
+ */
 
 export default defineConfig({
   plugins: [
@@ -60,11 +64,11 @@ export default defineConfig({
           html.replace(
             '<meta charset="utf-8">',
             `<meta charset="utf-8">
-    <script src="./web_modules/@ungap/global-this/index.js"></script>
-    <script src="./web_modules/tiny-array-flat-polyfill/tiny-array-flat-polyfill.min.js"></script>
-    <script src="./web_modules/lit/polyfill-support.js"></script>
-    <script src="./web_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="./web_modules/@webcomponents/shadycss/custom-style-interface.min.js"></script>`,
+     <script src="./web_modules/@ungap/global-this/index.js"></script>
+     <script src="./web_modules/tiny-array-flat-polyfill/tiny-array-flat-polyfill.min.js"></script>
+     <script src="./web_modules/lit/polyfill-support.js"></script>
+     <script src="./web_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+     <script src="./web_modules/@webcomponents/shadycss/custom-style-interface.min.js"></script>`,
           ),
       ],
     }),
@@ -75,7 +79,6 @@ export default defineConfig({
   ],
   build: {
     target: ['edge18'],
-    minify: 'terser',
     outDir: 'dev',
     rollupOptions: {
       input: 'demo/*.html',
