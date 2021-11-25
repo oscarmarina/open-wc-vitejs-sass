@@ -12,6 +12,10 @@
   <hr>
   <br>
 
+> TypeScript example - branch: ``` feature/typescript ```
+
+<br>
+
 ## Installation
 
 ```bash
