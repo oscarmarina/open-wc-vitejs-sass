@@ -47,6 +47,9 @@
     }
   },
   "lint-staged": {
+    "index.*": [
+      "npm run format:eslint"
+    ],
     "{src,define,test}/**/*.{js,ts,json,html}": [
       "npm run format:eslint"
     ],
