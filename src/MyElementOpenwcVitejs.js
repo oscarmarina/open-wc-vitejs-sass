@@ -43,7 +43,9 @@ export class MyElementOpenwcVitejs extends LitElement {
 
   _onClick() {
     this.counter += 1;
-    this.dispatchEvent(new CustomEvent('counter-changed'));
+    this.dispatchEvent(
+      new CustomEvent('counter-changed', { detail: this.counter }),
+    );
   }
 
   /**

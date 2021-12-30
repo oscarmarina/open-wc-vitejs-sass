@@ -21,7 +21,9 @@
         value: 'openwc + vite + scss',
       });
       render(
-        html`<my-element-openwc-vitejs .heading=${heading.value}
+        html`<my-element-openwc-vitejs
+          @counter-changed="${ev => console.log('==>', ev.detail)}"
+          .heading=${heading.value}
           >some light-dom</my-element-openwc-vitejs
         >`,
         document.querySelector('#demo'),

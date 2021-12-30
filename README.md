@@ -12,7 +12,7 @@
   <hr>
   <br>
 
-> TypeScript example - branch: ``` feature/typescript ```
+> TypeScript example - branch: `feature/typescript`
 
 <br>
 

@@ -22,7 +22,10 @@
       });
       render(
         html`
-          <my-element-openwc-vitejs .heading=${heading.value}>
+          <my-element-openwc-vitejs
+            @counter-changed="${ev => console.log('==>', ev.detail)}"
+            .heading=${heading.value}
+          >
             <span>${heading.key} some light-dom</span>
           </my-element-openwc-vitejs>
         `,
