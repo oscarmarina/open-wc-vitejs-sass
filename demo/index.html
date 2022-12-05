@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Demo my-element-openwc-vitejs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
+    <meta name="description" content="my-element-openwc-vitejs" />
     <style>
+      html,
       body {
-        background: #fafafa;
+        height: 100%;
+        margin: 0;
+        font-family: sans-serif;
       }
     </style>
   </head>
@@ -13,17 +19,13 @@
 
     <script type="module">
       import { html, render } from 'lit';
-      import { IronMeta } from '@polymer/iron-meta';
       import '../define/my-element-openwc-vitejs.js';
 
-      const heading = new IronMeta({
-        key: 'default',
-        value: 'openwc + vite + scss',
-      });
+      const heading = 'World!';
       render(
         html`<my-element-openwc-vitejs
           @counter-changed="${ev => console.log('==>', ev.detail)}"
-          .heading=${heading.value}
+          .heading=${heading}
           >some light-dom</my-element-openwc-vitejs
         >`,
         document.querySelector('#demo'),

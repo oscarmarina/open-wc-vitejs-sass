@@ -1,17 +1,8 @@
 /* eslint-disable implicit-arrow-linebreak */
 import { defineConfig } from 'vite';
-import pluginHtml from '@web/rollup-plugin-html';
+import { rollupPluginHTML as pluginHtml } from '@web/rollup-plugin-html';
 import copy from 'rollup-plugin-copy';
-import summary from 'rollup-plugin-summary';
-import minifyHTML from 'rollup-plugin-minify-html-literals';
-
-const minifyHTMLLiteralsConfig = {
-  options: {
-    minifyOptions: {
-      removeAttributeQuotes: false,
-    },
-  },
-};
+import totalBundlesize from '@blockquote/rollup-plugin-total-bundlesize';
 
 const copyConfig = {
   targets: [
@@ -57,26 +48,6 @@ const copyConfig = {
  */
 
 export default defineConfig({
-  plugins: [
-    pluginHtml({
-      transformHtml: [
-        html =>
-          html.replace(
-            '<meta charset="utf-8">',
-            `<meta charset="utf-8">
-     <script src="./web_modules/@ungap/global-this/index.js"></script>
-     <script src="./web_modules/tiny-array-flat-polyfill/tiny-array-flat-polyfill.min.js"></script>
-     <script src="./web_modules/lit/polyfill-support.js"></script>
-     <script src="./web_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-     <script src="./web_modules/@webcomponents/shadycss/custom-style-interface.min.js"></script>`,
-          ),
-      ],
-    }),
-
-    minifyHTML(minifyHTMLLiteralsConfig),
-    copy(copyConfig),
-    summary(),
-  ],
   build: {
     target: ['edge18'],
     outDir: 'dev',
@@ -86,6 +57,24 @@ export default defineConfig({
         dir: 'dev/',
         format: 'es',
       },
+      plugins: [
+        pluginHtml({
+          transformHtml: [
+            html =>
+              html.replace(
+                '<meta charset="utf-8">',
+                `<meta charset="utf-8">
+        <script src="./web_modules/@ungap/global-this/index.js"></script>
+        <script src="./web_modules/tiny-array-flat-polyfill/tiny-array-flat-polyfill.min.js"></script>
+        <script src="./web_modules/lit/polyfill-support.js"></script>
+        <script src="./web_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+        <script src="./web_modules/@webcomponents/shadycss/custom-style-interface.min.js"></script>`,
+              ),
+          ],
+        }),
+        copy(copyConfig),
+        totalBundlesize(),
+      ],
     },
   },
 });

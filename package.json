@@ -9,6 +9,25 @@
   ],
   "license": "MIT",
   "author": "my-element-openwc-vitejs",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./index.js"
+    },
+    "./package.json": "./package.json",
+    "./src/MyElementOpenwcVitejs.js": {
+      "default": "./src/MyElementOpenwcVitejs.js"
+    },
+    "./define/my-element-openwc-vitejs.js": {
+      "default": "./define/my-element-openwc-vitejs.js"
+    },
+    "./index.js": {
+      "default": "./index.js"
+    },
+    "./src/styles/my-element-openwc-vitejs-styles.css.js": {
+      "default": "./src/styles/my-element-openwc-vitejs-styles.css.js"
+    }
+  },
   "main": "index.js",
   "module": "index.js",
   "files": [
@@ -19,18 +38,17 @@
   ],
   "scripts": {
     "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
-    "analyze:watch": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\" --watch",
     "build": "echo \"This is not a TypeScript project, so no need to build.\"",
     "dev:vite": "vite build",
     "format": "npm run format:eslint && npm run format:prettier && npm run format:stylelint",
-    "format:eslint": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" --fix --ignore-path .gitignore",
-    "format:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --write --ignore-path .gitignore",
-    "format:stylelint": "stylelint --fix --allow-empty-input --ignore-path .gitignore \"**/*.{scss,css}\"",
+    "format:eslint": "eslint \"**/*.{js,ts,html}\" --fix --ignore-path .eslintignore",
+    "format:prettier": "prettier \"**/*.{js,ts,json,html}\" --write --ignore-path .eslintignore",
+    "format:stylelint": "stylelint \"**/*.{scss,css}\" --fix --allow-empty-input --ignore-path .eslintignore",
     "postinstall": "npm run sort:package",
     "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
-    "lint:eslint": "eslint \"{src,define,test}/**/*.{js,ts,json,html}\" \"index.*\" --ignore-path .gitignore",
-    "lint:prettier": "prettier \"**/*.{js,ts,json,html,md}\" --check --ignore-path .gitignore",
-    "lint:stylelint": "stylelint --allow-empty-input --ignore-path .gitignore \"**/*.{scss,css}\"",
+    "lint:eslint": "eslint \"**/*.{js,ts,html}\" --ignore-path .eslintignore",
+    "lint:prettier": "prettier \"**/*.{js,ts,json,html}\" --check --ignore-path .eslintignore",
+    "lint:stylelint": "stylelint \"**/*.{scss,css}\" --allow-empty-input --ignore-path .eslintignore",
     "preview:vite": "vite preview",
     "sass:watch": "sass-style-template",
     "sort:package": "npx sort-package-json",
@@ -47,13 +65,10 @@
     }
   },
   "lint-staged": {
-    "index.*": [
+    "**/*.{js,ts,html}": [
       "npm run format:eslint"
     ],
-    "{src,define,test}/**/*.{js,ts,json,html}": [
-      "npm run format:eslint"
-    ],
-    "**/*.{js,ts,json,html,md}": [
+    "**/*.{js,ts,json,html}": [
       "npm run format:prettier"
     ],
     "**/*.{scss,css}": [
@@ -62,16 +77,39 @@
   },
   "prettier": {
     "arrowParens": "avoid",
+    "printWidth": 100,
     "singleQuote": true,
-    "trailingComma": "all"
+    "trailingComma": "all",
+    "overrides": [
+      {
+        "files": "*.{scss,css}",
+        "options": {
+          "printWidth": 280,
+          "singleQuote": false
+        }
+      }
+    ]
   },
   "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": "latest"
+    },
+    "plugins": [
+      "log-filenames"
+    ],
     "extends": [
-      "prettier",
-      "@open-wc"
+      "@open-wc",
+      "prettier"
     ],
     "rules": {
       "class-methods-use-this": "off",
+      "no-unused-expressions": [
+        "error",
+        {
+          "allowShortCircuit": true,
+          "allowTernary": true
+        }
+      ],
       "object-curly-newline": "off",
       "import/extensions": [
         "error",
@@ -80,44 +118,61 @@
           "ignorePackages": true
         }
       ],
-      "import/no-unresolved": "off"
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": [
+            "**/test/**/*.{js,ts}",
+            "**/*.config.{js,ts,mjs,cjs}",
+            "**/*.conf.{js,ts,mjs,cjs}"
+          ]
+        }
+      ],
+      "import/no-unresolved": "off",
+      "import/prefer-default-export": "off"
     }
   },
   "stylelint": {
-    "extends": "stylelint-config-standard-scss"
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+      "custom-property-pattern": null,
+      "max-line-length": null,
+      "no-duplicate-selectors": null,
+      "color-function-notation": null,
+      "alpha-value-notation": null
+    }
   },
   "dependencies": {
     "@polymer/iron-meta": "^3.0.1",
-    "lit": "^2.0.2"
+    "lit": "^2.3.1"
   },
   "devDependencies": {
-    "@blockquote/sass-style-template": "^2.0.0",
-    "@blockquote/test-runner-mocha-style-reporter": "^1.0.0",
-    "@custom-elements-manifest/analyzer": "^0.5.3",
-    "@custom-elements-manifest/to-markdown": "^0.1.0",
-    "@open-wc/eslint-config": "^7.0.0",
-    "@open-wc/testing": "^3.0.3",
+    "@blockquote/coverage-table-reporter": "^1.0.0",
+    "@blockquote/rollup-plugin-total-bundlesize": "^1.0.0",
+    "@blockquote/sass-style-template": "^3.0.0",
+    "@custom-elements-manifest/analyzer": "^0.6.4",
+    "@open-wc/eslint-config": "^9.0.0",
+    "@open-wc/testing": "^3.1.6",
     "@ungap/global-this": "^0.4.4",
-    "@web/dev-server": "^0.1.25",
-    "@web/rollup-plugin-html": "^1.10.1",
-    "@web/test-runner": "^0.13.23",
-    "@web/test-runner-playwright": "^0.8.8",
+    "@web/dev-server": "^0.1.34",
+    "@web/rollup-plugin-html": "^1.11.0",
+    "@web/test-runner": "^0.15.0",
+    "@web/test-runner-playwright": "^0.9.0",
     "@webcomponents/shadycss": "^1.11.0",
     "@webcomponents/webcomponentsjs": "^2.6.0",
-    "concurrently": "^6.4.0",
-    "eslint": "^8.0.0",
-    "eslint-config-prettier": "^8.3.0",
-    "husky": "^4.3.8",
-    "lint-staged": "^12.0.0",
-    "prettier": "^2.4.1",
+    "concurrently": "^7.4.0",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-log-filenames": "^1.0.6",
+    "husky": "^4.3.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
     "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-minify-html-literals": "^1.2.6",
-    "rollup-plugin-summary": "^1.3.0",
-    "sort-package-json": "^1.52.0",
-    "stylelint": "^14.0.0",
-    "stylelint-config-standard-scss": "^3.0.0",
+    "sort-package-json": "^2.1.0",
+    "stylelint": "^14.11.0",
+    "stylelint-config-standard-scss": "^6.1.0",
     "tiny-array-flat-polyfill": "^0.2.1",
-    "vite": "^2.7.0"
+    "vite": "^3.2.0"
   },
   "publishConfig": {
     "access": "public"

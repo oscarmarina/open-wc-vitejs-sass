@@ -30,3 +30,11 @@ build
 *.tgz
 *.tsbuildinfo
 storybook-static
+## end gitignore
+
+## specific eslintignore
+*.config.js
+package-lock.json
+*.min.js
+*-styles.*
+CHANGELOG.md

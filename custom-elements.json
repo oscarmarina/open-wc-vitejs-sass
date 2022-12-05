@@ -56,23 +56,23 @@
             {
               "kind": "field",
               "name": "heading",
+              "privacy": "public",
+              "description": "The heading to say \"Hello\" to.",
               "type": {
                 "text": "string"
               },
               "default": "'Hey there'",
-              "privacy": "public",
-              "description": "The heading to say \"Hello\" to.",
               "attribute": "heading"
             },
             {
               "kind": "field",
               "name": "counter",
+              "privacy": "public",
+              "description": "The number of times the button has been clicked.",
               "type": {
                 "text": "number"
               },
               "default": "5",
-              "privacy": "public",
-              "description": "The number of times the button has been clicked.",
               "attribute": "counter"
             }
           ],
@@ -91,6 +91,7 @@
               "type": {
                 "text": "string"
               },
+              "default": "'Hey there'",
               "fieldName": "heading"
             },
             {
@@ -99,6 +100,7 @@
               "type": {
                 "text": "number"
               },
+              "default": "5",
               "fieldName": "counter"
             }
           ],
@@ -122,14 +124,21 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/styles/MyElementOpenwcVitejs-styles.js",
-      "declarations": [],
+      "path": "src/styles/my-element-openwc-vitejs-styles.css.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "styles",
+          "default": "css`:host {\n  display: block;\n  box-sizing: border-box;\n  padding: 1rem;\n}\n\n:host([hidden]),\n[hidden] {\n  display: none !important;\n}\n\n*,\n*::before,\n*::after {\n  box-sizing: inherit;\n}`"
+        }
+      ],
       "exports": [
         {
           "kind": "js",
-          "name": "default",
+          "name": "styles",
           "declaration": {
-            "module": "src/styles/MyElementOpenwcVitejs-styles.js"
+            "name": "styles",
+            "module": "src/styles/my-element-openwc-vitejs-styles.css.js"
           }
         }
       ]

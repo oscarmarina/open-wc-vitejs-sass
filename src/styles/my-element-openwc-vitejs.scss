@@ -1,6 +1,7 @@
 :host {
   display: block;
   box-sizing: border-box;
+  padding: 1rem;
 }
 
 :host([hidden]),
@@ -12,5 +13,4 @@
 *::before,
 *::after {
   box-sizing: inherit;
-  white-space: nowrap;
 }

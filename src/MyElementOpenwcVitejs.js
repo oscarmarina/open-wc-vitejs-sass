@@ -1,5 +1,5 @@
 import { html, LitElement } from 'lit';
-import styles from './styles/MyElementOpenwcVitejs-styles.js';
+import { styles } from './styles/my-element-openwc-vitejs-styles.css.js';
 
 export class MyElementOpenwcVitejs extends LitElement {
   static get is() {
@@ -43,9 +43,7 @@ export class MyElementOpenwcVitejs extends LitElement {
 
   _onClick() {
     this.counter += 1;
-    this.dispatchEvent(
-      new CustomEvent('counter-changed', { detail: this.counter }),
-    );
+    this.dispatchEvent(new CustomEvent('counter-changed', { detail: this.counter }));
   }
 
   /**

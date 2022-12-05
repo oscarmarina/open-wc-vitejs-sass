@@ -29,7 +29,7 @@ npm i my-element-openwc-vitejs
   import 'my-element-openwc-vitejs/my-element-openwc-vitejs.js';
 </script>
 
-<my-element-openwc-vitejs></my-element-openwc-vitejs>
+<my-element-openwc-vitejs>Hi light DOM</my-element-openwc-vitejs>
 ```
 
 ## Tooling configs

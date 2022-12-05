@@ -14,3 +14,8 @@ snapshots["MyElementOpenwcVitejs Default Semantic Dom and a11y SHADOW DOM - Stru
 `;
 /* end snapshot MyElementOpenwcVitejs Default Semantic Dom and a11y SHADOW DOM - Structure test */
 
+snapshots["MyElementOpenwcVitejs Default Semantic Dom and a11y LIGHT DOM - Structure test"] = 
+`light-dom
+`;
+/* end snapshot MyElementOpenwcVitejs Default Semantic Dom and a11y LIGHT DOM - Structure test */
+
