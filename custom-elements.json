@@ -28,11 +28,15 @@
             {
               "kind": "field",
               "name": "is",
-              "static": true
+              "type": {
+                "text": "string"
+              },
+              "static": true,
+              "default": "'my-element-openwc-vitejs'"
             },
             {
               "kind": "method",
-              "name": "_onClick"
+              "name": "#onClick"
             },
             {
               "kind": "method",
@@ -57,10 +61,10 @@
               "kind": "field",
               "name": "heading",
               "privacy": "public",
-              "description": "The heading to say \"Hello\" to.",
               "type": {
                 "text": "string"
               },
+              "description": "The heading to say \"Hello\" to.",
               "default": "'Hey there'",
               "attribute": "heading"
             },
@@ -68,17 +72,17 @@
               "kind": "field",
               "name": "counter",
               "privacy": "public",
-              "description": "The number of times the button has been clicked.",
               "type": {
                 "text": "number"
               },
+              "description": "The number of times the button has been clicked.",
               "default": "5",
               "attribute": "counter"
             }
           ],
           "events": [
             {
-              "name": "counter-changed",
+              "name": "counterchange",
               "type": {
                 "text": "CustomEvent"
               }
@@ -87,19 +91,19 @@
           "attributes": [
             {
               "name": "heading",
-              "description": "The heading to say \"Hello\" to.",
               "type": {
                 "text": "string"
               },
+              "description": "The heading to say \"Hello\" to.",
               "default": "'Hey there'",
               "fieldName": "heading"
             },
             {
               "name": "counter",
-              "description": "The number of times the button has been clicked.",
               "type": {
                 "text": "number"
               },
+              "description": "The number of times the button has been clicked.",
               "default": "5",
               "fieldName": "counter"
             }
@@ -129,7 +133,7 @@
         {
           "kind": "variable",
           "name": "styles",
-          "default": "css`:host {\n  display: block;\n  box-sizing: border-box;\n  padding: 1rem;\n}\n\n:host([hidden]),\n[hidden] {\n  display: none !important;\n}\n\n*,\n*::before,\n*::after {\n  box-sizing: inherit;\n}`"
+          "default": "css`:host {\n  display: block;\n  box-sizing: border-box;\n}\n\n:host([hidden]),\n[hidden] {\n  display: none !important;\n}\n\n*,\n*::before,\n*::after {\n  box-sizing: inherit;\n}`"
         }
       ],
       "exports": [

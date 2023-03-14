@@ -9,6 +9,7 @@
 - #### demo online
   - [https://sharp-fermi-2f88f5.netlify.app](https://sharp-fermi-2f88f5.netlify.app)
   - [https://sharp-fermi-2f88f5.netlify.app/other.html](https://sharp-fermi-2f88f5.netlify.app/other.html)
+  - [stackblitz - open-wc-vitejs-sass](https://stackblitz.com/github/oscarmarina/open-wc-vitejs-sass)
   <hr>
   <br>
 

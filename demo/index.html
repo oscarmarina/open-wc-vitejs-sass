@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Demo my-element-openwc-vitejs</title>
+    <title>Demo - my-element-openwc-vitejs</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <meta name="description" content="my-element-openwc-vitejs" />
@@ -24,7 +24,7 @@
       const heading = 'World!';
       render(
         html`<my-element-openwc-vitejs
-          @counter-changed="${ev => console.log('==>', ev.detail)}"
+          @counterchange="${ev => console.log('==>', ev.detail)}"
           .heading=${heading}
           >some light-dom</my-element-openwc-vitejs
         >`,
