@@ -30,6 +30,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
 
   reporters: [summaryReporter(), defaultReporter(), coverageTableReporter()],
 
+  coverage: true,
   coverageConfig: {
     reportDir: `${outDir}/test/coverage`,
     reporters: ['lcov', 'lcovonly', 'json'],
@@ -45,8 +46,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   testFramework: {
     config: {
       ui: 'tdd',
-      timeout: 4000,
-      reporter: 'html',
+      timeout: 4000
     },
   },
 

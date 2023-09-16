@@ -46,9 +46,9 @@ suite('MyElementOpenwcVitejs', () => {
 
   suite('Override ', () => {
     setup(async () => {
-      el = await fixture(
-        html` <my-element-openwc-vitejs heading="attribute heading"></my-element-openwc-vitejs> `,
-      );
+      el = await fixture(html`
+        <my-element-openwc-vitejs heading="attribute heading"></my-element-openwc-vitejs>
+      `);
       await el.updateComplete;
     });
 

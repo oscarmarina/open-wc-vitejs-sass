@@ -14,7 +14,9 @@
     ".": {
       "default": "./index.js"
     },
-    "./package.json": "./package.json",
+    "./package.json": {
+      "default": "./package.json"
+    },
     "./src/MyElementOpenwcVitejs.js": {
       "default": "./src/MyElementOpenwcVitejs.js"
     },
@@ -49,20 +51,14 @@
     "lint:eslint": "eslint \"**/*.{js,ts,html}\" --ignore-path .eslintignore",
     "lint:prettier": "prettier \"**/*.{js,ts,json,html}\" --check --ignore-path .eslintignore",
     "lint:stylelint": "stylelint \"**/*.{scss,css}\" --allow-empty-input --ignore-path .eslintignore",
+    "prepare": "husky install",
     "preview:vite": "vite preview",
     "sass:watch": "sass-style-template",
     "sort:package": "npx sort-package-json",
     "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
-    "start:wds": "concurrently -k -r \"npm:sass:watch\" \"npm:wds\"",
-    "test": "wtr --coverage",
+    "test": "wtr",
     "test:watch": "wtr --watch",
-    "vite": "vite",
-    "wds": "web-dev-server"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "vite": "vite"
   },
   "lint-staged": {
     "**/*.{js,ts,html}": [
@@ -129,7 +125,8 @@
         }
       ],
       "import/no-unresolved": "off",
-      "import/prefer-default-export": "off"
+      "import/prefer-default-export": "off",
+      "lit/no-native-attributes": "off"
     }
   },
   "stylelint": {
@@ -142,36 +139,32 @@
     }
   },
   "dependencies": {
-    "@polymer/iron-meta": "^3.0.1",
-    "lit": "^2.5.0"
+    "lit": "^2.8.0"
   },
   "devDependencies": {
+    "@blockquote/cem-to-markdown-readme": "^1.0.0",
     "@blockquote/coverage-table-reporter": "^1.0.0",
-    "@blockquote/rollup-plugin-total-bundlesize": "^1.0.0",
-    "@blockquote/sass-style-template": "^3.0.1",
-    "@custom-elements-manifest/analyzer": "^0.6.9",
-    "@open-wc/eslint-config": "^9.2.2",
-    "@open-wc/testing": "^3.1.7",
+    "@blockquote/rollup-plugin-total-bundlesize": "^2.0.1",
+    "@blockquote/sass-style-template": "^3.0.2",
+    "@custom-elements-manifest/analyzer": "^0.8.4",
+    "@open-wc/eslint-config": "^12.0.0",
+    "@open-wc/testing": "^3.2.0",
     "@ungap/global-this": "^0.4.4",
-    "@web/dev-server": "^0.1.36",
-    "@web/rollup-plugin-html": "^1.11.0",
-    "@web/test-runner": "^0.15.1",
-    "@web/test-runner-playwright": "^0.9.0",
-    "@webcomponents/shadycss": "^1.11.1",
-    "@webcomponents/webcomponentsjs": "^2.7.0",
-    "concurrently": "^7.6.0",
-    "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.7.0",
+    "@web/rollup-plugin-html": "^2.0.1",
+    "@web/test-runner": "^0.17.1",
+    "@web/test-runner-playwright": "^0.10.1",
+    "concurrently": "^8.2.1",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-log-filenames": "^1.0.6",
-    "husky": "^4.3.8",
-    "lint-staged": "^13.2.0",
-    "prettier": "^2.8.4",
-    "rollup-plugin-copy": "^3.4.0",
-    "sort-package-json": "^2.4.1",
-    "stylelint": "^15.2.0",
-    "stylelint-config-standard-scss": "^7.0.1",
-    "tiny-array-flat-polyfill": "^0.2.1",
-    "vite": "^4.1.4"
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "rollup-plugin-copy": "^3.5.0",
+    "sort-package-json": "^2.5.1",
+    "stylelint": "^15.10.3",
+    "stylelint-config-standard-scss": "^11.0.0",
+    "vite": "^4.4.9"
   },
   "publishConfig": {
     "access": "public"

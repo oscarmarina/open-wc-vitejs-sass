@@ -1,9 +1,28 @@
 import { html, LitElement } from 'lit';
 import { styles } from './styles/my-element-openwc-vitejs-styles.css.js';
 
+/**
+ * ![Lit](https://img.shields.io/badge/lit-2.0.0-blue)
+ *
+ * # OPEN-WC & VITEJS & SCSS
+ * ## Example generated using
+ * - #### [npm init @blockquote/wc](https://github.com/oscarmarina/create-wc)
+ *
+ * #### Demo online:
+ * - [https://sharp-fermi-2f88f5.netlify.app](https://sharp-fermi-2f88f5.netlify.app)
+ * - [stackblitz - open-wc-vitejs-sass](https://stackblitz.com/github/oscarmarina/open-wc-vitejs-sass)
+ * <br>
+ *
+ * ##### TypeScript example - branch: `feature/typescript`
+ * ---
+ * #### `<my-element-openwc-vitejs>`
+ *
+ * An example element.
+ *
+ * @fires counterchange - Indicates when the count changes
+ * @slot - This element has a slot
+ */
 export class MyElementOpenwcVitejs extends LitElement {
-  static is = 'my-element-openwc-vitejs';
-
   static styles = [styles];
 
   static properties = {

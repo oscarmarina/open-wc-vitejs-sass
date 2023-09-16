@@ -4,36 +4,19 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "define/my-element-openwc-vitejs.js",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "custom-element-definition",
-          "declaration": {
-            "name": "MyElementOpenwcVitejs",
-            "module": "/src/MyElementOpenwcVitejs.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/MyElementOpenwcVitejs.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "",
+          "description": "![Lit](https://img.shields.io/badge/lit-2.0.0-blue)\n\n# OPEN-WC & VITEJS & SCSS\n## Example generated using\n- #### [npm init @blockquote/wc](https://github.com/oscarmarina/create-wc)\n\n#### Demo online:\n- [https://sharp-fermi-2f88f5.netlify.app](https://sharp-fermi-2f88f5.netlify.app)\n- [stackblitz - open-wc-vitejs-sass](https://stackblitz.com/github/oscarmarina/open-wc-vitejs-sass)\n<br>\n\n##### TypeScript example - branch: `feature/typescript`\n---\n#### `<my-element-openwc-vitejs>`\n\nAn example element.",
           "name": "MyElementOpenwcVitejs",
-          "members": [
+          "slots": [
             {
-              "kind": "field",
-              "name": "is",
-              "type": {
-                "text": "string"
-              },
-              "static": true,
-              "default": "'my-element-openwc-vitejs'"
-            },
+              "description": "This element has a slot",
+              "name": ""
+            }
+          ],
+          "members": [
             {
               "kind": "method",
               "name": "#onClick"
@@ -85,7 +68,8 @@
               "name": "counterchange",
               "type": {
                 "text": "CustomEvent"
-              }
+              },
+              "description": "Indicates when the count changes"
             }
           ],
           "attributes": [
@@ -112,6 +96,7 @@
             "name": "LitElement",
             "package": "lit"
           },
+          "tagName": "my-element-openwc-vitejs",
           "customElement": true
         }
       ],
@@ -143,6 +128,21 @@
           "declaration": {
             "name": "styles",
             "module": "src/styles/my-element-openwc-vitejs-styles.css.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "define/my-element-openwc-vitejs.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "my-element-openwc-vitejs",
+          "declaration": {
+            "name": "MyElementOpenwcVitejs",
+            "module": "/src/MyElementOpenwcVitejs.js"
           }
         }
       ]
