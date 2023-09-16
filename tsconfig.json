@@ -1,27 +1,29 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+    "target": "es2021",
+    "lib": ["es2021", "DOM", "DOM.Iterable"],
+    "experimentalDecorators": true,
     "module": "es2020",
-    "lib": ["es2020", "DOM", "DOM.Iterable"],
+    "moduleResolution": "bundler",
+    "rootDirs": ["./src", "./define", ".test/"],
+    "resolveJsonModule": true,
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "inlineSources": true,
     "outDir": "./dist",
-    "rootDirs": ["./src", "./define", ".test/"],
+    "inlineSources": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitOverride": true
+    "noImplicitOverride": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "define/**/*.ts", "test/**/*.ts", "./index.ts"],
-  "exclude": []
+  "include": ["src/**/*.ts", "define/**/*.ts", "test/**/*.ts", "./index.ts", "types/**/*.d.ts"]
 }

@@ -1,43 +1,84 @@
-# OPEN-WC & VITEJS & SCSS
-
 ![Lit](https://img.shields.io/badge/lit-2.0.0-blue)
 
+# OPEN-WC & VITEJS & SCSS
+
 ## Example generated using
+- #### [npm init @blockquote/wc](https://github.com/oscarmarina/create-wc)
 
-- ### [npm init @blockquote/wc](https://github.com/oscarmarina/create-wc)
+#### Demo online:
+- [https://sharp-fermi-2f88f5.netlify.app](https://sharp-fermi-2f88f5.netlify.app)
+- [stackblitz - open-wc-vitejs-sass](https://stackblitz.com/github/oscarmarina/open-wc-vitejs-sass)
+---
+#### `<my-element-openwc-vitejs>`
 
-- #### demo online
-  - [https://heuristic-noether-efdd52.netlify.app/](https://heuristic-noether-efdd52.netlify.app/)
-  - [https://heuristic-noether-efdd52.netlify.app//other.html](https://heuristic-noether-efdd52.netlify.app//other.html)
-  <hr>
-  <br>
+An example element.
 
-## Installation
 
-```bash
-npm i my-element-openwc-vitejs
-```
+### `src/MyElementOpenwcVitejs.ts`:
 
-## Usage
+#### class: `MyElementOpenwcVitejs`, `my-element-openwc-vitejs`
 
-```html
-<script type="module">
-  import 'my-element-openwc-vitejs/my-element-openwc-vitejs.js';
-</script>
+##### Fields
 
-<my-element-openwc-vitejs></my-element-openwc-vitejs>
-```
+| Name      | Privacy | Type     | Default       | Description                                      | Inherited From |
+| --------- | ------- | -------- | ------------- | ------------------------------------------------ | -------------- |
+| `heading` |         | `string` | `'Hey there'` | The heading to say "Hello" to.                   |                |
+| `counter` |         | `number` | `5`           | The number of times the button has been clicked. |                |
 
-## Tooling configs
+##### Methods
 
-For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
+| Name       | Privacy | Description        | Parameters        | Return   | Inherited From |
+| ---------- | ------- | ------------------ | ----------------- | -------- | -------------- |
+| `#onClick` |         |                    |                   |          |                |
+| `sayHello` |         | Formats a greeting | `heading: string` | `string` |                |
 
-If you customize the configuration a lot, you can consider moving them to individual files.
+##### Events
 
-## Local Demo with `vite`
+| Name            | Type          | Description                      | Inherited From |
+| --------------- | ------------- | -------------------------------- | -------------- |
+| `counterchange` | `CustomEvent` | Indicates when the count changes |                |
 
-```bash
-npm start
-```
+##### Attributes
 
-To run a local development server that serves the basic demo located in demo/index.html
+| Name      | Field   | Inherited From |
+| --------- | ------- | -------------- |
+| `heading` | heading |                |
+| `counter` | counter |                |
+
+##### Slots
+
+| Name | Description             |
+| ---- | ----------------------- |
+|      | This element has a slot |
+
+<hr/>
+
+#### Exports
+
+| Kind | Name                    | Declaration           | Module                       | Package |
+| ---- | ----------------------- | --------------------- | ---------------------------- | ------- |
+| `js` | `MyElementOpenwcVitejs` | MyElementOpenwcVitejs | src/MyElementOpenwcVitejs.ts |         |
+
+### `src/styles/my-element-openwc-vitejs-styles.css.ts`:
+
+#### Variables
+
+| Name     | Description | Type |
+| -------- | ----------- | ---- |
+| `styles` |             |      |
+
+<hr/>
+
+#### Exports
+
+| Kind | Name     | Declaration | Module                                            | Package |
+| ---- | -------- | ----------- | ------------------------------------------------- | ------- |
+| `js` | `styles` | styles      | src/styles/my-element-openwc-vitejs-styles.css.ts |         |
+
+### `define/my-element-openwc-vitejs.ts`:
+
+#### Exports
+
+| Kind                        | Name                       | Declaration           | Module                        | Package |
+| --------------------------- | -------------------------- | --------------------- | ----------------------------- | ------- |
+| `custom-element-definition` | `my-element-openwc-vitejs` | MyElementOpenwcVitejs | /src/MyElementOpenwcVitejs.js |         |
