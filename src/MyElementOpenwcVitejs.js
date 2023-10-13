@@ -2,11 +2,18 @@ import { html, LitElement } from 'lit';
 import { styles } from './styles/my-element-openwc-vitejs-styles.css.js';
 
 /**
- * ![Lit](https://img.shields.io/badge/lit-2.0.0-blue)
+ * ![Lit](https://img.shields.io/badge/lit-3.0.0-blue)
  *
  * # OPEN-WC & VITEJS & SCSS
  * ## Example generated using
  * - #### [npm init @blockquote/wc](https://github.com/oscarmarina/create-wc)
+ *
+ * > Differences with the original template:
+ * > - [Add tsconfig.json](https://humanwhocodes.com/snippets/2020/10/create-typescript-declarations-from-javascript-jsdoc/)
+ *     - Update `build:`script and add `build:tsc` script
+ * > - [Add Lit 3.0](https://lit.dev/blog/2023-10-10-lit-3.0/)
+ * > - [Add dependencies `typescript and tslib`](https://www.typescriptlang.org/)
+ * > - Add a `clean: script` to package.json
  *
  * #### Demo online:
  * - [https://sharp-fermi-2f88f5.netlify.app](https://sharp-fermi-2f88f5.netlify.app)
@@ -15,26 +22,32 @@ import { styles } from './styles/my-element-openwc-vitejs-styles.css.js';
  *
  * ##### TypeScript example - branch: `feature/typescript`
  * ---
- * #### `<my-element-openwc-vitejs>`
  *
+ * #### `<my-element-openwc-vitejs>`
  * An example element.
  *
+ * @attribute heading
+ * @attribute counter
  * @fires counterchange - Indicates when the count changes
  * @slot - This element has a slot
  */
 export class MyElementOpenwcVitejs extends LitElement {
+  /**
+   * @override
+   */
   static styles = [styles];
 
+  /**
+   * @override
+   */
   static properties = {
     /**
      * The heading to say "Hello" to.
-     * @type {string}
      */
     heading: { type: String },
 
     /**
      * The number of times the button has been clicked.
-     * @type {number}
      */
     counter: { type: Number },
   };
@@ -45,6 +58,9 @@ export class MyElementOpenwcVitejs extends LitElement {
     this.counter = 5;
   }
 
+  /**
+   * @override
+   */
   render() {
     return html`
       <h1>${this.sayHello(this.heading)}!</h1>

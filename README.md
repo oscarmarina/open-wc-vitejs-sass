@@ -1,8 +1,15 @@
-![Lit](https://img.shields.io/badge/lit-2.0.0-blue)
+![Lit](https://img.shields.io/badge/lit-3.0.0-blue)
 
 # OPEN-WC & VITEJS & SCSS
 ## Example generated using
 - #### [npm init @blockquote/wc](https://github.com/oscarmarina/create-wc)
+
+> Differences with the original template:
+> - [Add tsconfig.json](https://humanwhocodes.com/snippets/2020/10/create-typescript-declarations-from-javascript-jsdoc/)
+    - Update `build:`script and add `build:tsc` script
+> - [Add Lit 3.0](https://lit.dev/blog/2023-10-10-lit-3.0/)
+> - [Add dependencies `typescript and tslib`](https://www.typescriptlang.org/)
+> - Add a `clean: script` to package.json
 
 #### Demo online:
 - [https://sharp-fermi-2f88f5.netlify.app](https://sharp-fermi-2f88f5.netlify.app)
@@ -11,8 +18,8 @@
 
 ##### TypeScript example - branch: `feature/typescript`
 ---
-#### `<my-element-openwc-vitejs>`
 
+#### `<my-element-openwc-vitejs>`
 An example element.
 
 

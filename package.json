@@ -40,7 +40,9 @@
   ],
   "scripts": {
     "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
-    "build": "echo \"This is not a TypeScript project, so no need to build.\"",
+    "build": "npm run build:tsc && npm run dev:vite",
+    "build:tsc": "npm run clean && tsc",
+    "clean": "find . \\( -type f -name '*.d.*' -o -type d -name '.wireit' \\) -not -path './node_modules/*' -delete",
     "dev:vite": "vite build",
     "format": "npm run format:eslint && npm run format:prettier && npm run format:stylelint",
     "format:eslint": "eslint \"**/*.{js,ts,html}\" --fix --ignore-path .eslintignore",
@@ -90,9 +92,6 @@
     "parserOptions": {
       "ecmaVersion": "latest"
     },
-    "plugins": [
-      "log-filenames"
-    ],
     "extends": [
       "@open-wc",
       "prettier"
@@ -139,32 +138,34 @@
     }
   },
   "dependencies": {
-    "lit": "^2.8.0"
+    "lit": "^3.0.0"
   },
   "devDependencies": {
     "@blockquote/cem-to-markdown-readme": "^1.0.0",
-    "@blockquote/coverage-table-reporter": "^1.0.0",
-    "@blockquote/rollup-plugin-total-bundlesize": "^2.0.1",
+    "@blockquote/coverage-table-reporter": "^1.2.0",
+    "@blockquote/rollup-plugin-total-bundlesize": "^2.1.1",
     "@blockquote/sass-style-template": "^3.0.2",
     "@custom-elements-manifest/analyzer": "^0.8.4",
     "@open-wc/eslint-config": "^12.0.0",
     "@open-wc/testing": "^3.2.0",
     "@ungap/global-this": "^0.4.4",
     "@web/rollup-plugin-html": "^2.0.1",
-    "@web/test-runner": "^0.17.1",
+    "@web/test-runner": "^0.17.2",
     "@web/test-runner-playwright": "^0.10.1",
     "concurrently": "^8.2.1",
-    "eslint": "^8.49.0",
+    "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-log-filenames": "^1.0.6",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^3.0.3",
     "rollup-plugin-copy": "^3.5.0",
-    "sort-package-json": "^2.5.1",
+    "sort-package-json": "^2.6.0",
     "stylelint": "^15.10.3",
     "stylelint-config-standard-scss": "^11.0.0",
-    "vite": "^4.4.9"
+    "ts-lit-plugin": "^2.0.0-pre.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11"
   },
   "publishConfig": {
     "access": "public"
