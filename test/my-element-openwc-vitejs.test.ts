@@ -1,7 +1,5 @@
-import { html, fixture, assert, fixtureCleanup } from '@open-wc/testing';
-
+import { html, fixture, assert, expect, fixtureCleanup } from '@open-wc/testing';
 import { MyElementOpenwcVitejs } from '../src/MyElementOpenwcVitejs.js';
-
 import '../define/my-element-openwc-vitejs.js';
 
 suite('MyElementOpenwcVitejs', () => {
@@ -11,9 +9,7 @@ suite('MyElementOpenwcVitejs', () => {
 
   suite('Default', () => {
     setup(async () => {
-      el = (await fixture(html`
-        <my-element-openwc-vitejs>light-dom</my-element-openwc-vitejs>
-      `)) as MyElementOpenwcVitejs;
+      el = await fixture(html`<my-element-openwc-vitejs>light-dom</my-element-openwc-vitejs>`);
       await el.updateComplete;
     });
 
@@ -24,11 +20,11 @@ suite('MyElementOpenwcVitejs', () => {
 
     suite('Semantic Dom and a11y', () => {
       test('SHADOW DOM - Structure test', async () => {
-        await assert.shadowDom.equalSnapshot(el);
+        await expect(el).shadowDom.to.equalSnapshot();
       });
 
       test('LIGHT DOM - Structure test', async () => {
-        await assert.lightDom.equalSnapshot(el);
+        await expect(el).lightDom.to.equalSnapshot();
       });
       test('a11y', async () => {
         await assert.isAccessible(el);
@@ -38,9 +34,7 @@ suite('MyElementOpenwcVitejs', () => {
 
   suite('Events ', () => {
     setup(async () => {
-      el = (await fixture(html`
-        <my-element-openwc-vitejs></my-element-openwc-vitejs>
-      `)) as MyElementOpenwcVitejs;
+      el = await fixture(html`<my-element-openwc-vitejs></my-element-openwc-vitejs>`);
       await el.updateComplete;
     });
 
@@ -53,9 +47,9 @@ suite('MyElementOpenwcVitejs', () => {
 
   suite('Override ', () => {
     setup(async () => {
-      el = (await fixture(html`
-        <my-element-openwc-vitejs heading="attribute heading"></my-element-openwc-vitejs>
-      `)) as MyElementOpenwcVitejs;
+      el = await fixture(
+        html`<my-element-openwc-vitejs heading="attribute heading"></my-element-openwc-vitejs>`,
+      );
       await el.updateComplete;
     });
 

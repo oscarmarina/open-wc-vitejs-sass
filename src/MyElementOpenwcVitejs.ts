@@ -3,12 +3,16 @@ import { property } from 'lit/decorators.js';
 import { styles } from './styles/my-element-openwc-vitejs-styles.css.js';
 
 /**
- * ![Lit](https://img.shields.io/badge/lit-2.0.0-blue)
+ * ![Lit](https://img.shields.io/badge/lit-3.0.0-blue)
  *
  * # OPEN-WC & VITEJS & SCSS
 
  * ## Example generated using
  * - #### [npm init @blockquote/wc](https://github.com/oscarmarina/create-wc)
+ *
+ * > Differences with the original template:
+ * > - [Add Lit 3.0](https://lit.dev/blog/2023-10-10-lit-3.0/)
+ * > - Add a `clean: script` to package.json
  *
  * #### Demo online:
  * - [https://sharp-fermi-2f88f5.netlify.app](https://sharp-fermi-2f88f5.netlify.app)
@@ -18,6 +22,8 @@ import { styles } from './styles/my-element-openwc-vitejs-styles.css.js';
  *
  * An example element.
  *
+ * @attribute heading
+ * @attribute counter
  * @fires counterchange - Indicates when the count changes
  * @slot - This element has a slot
  */
